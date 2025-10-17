@@ -9,8 +9,9 @@ module.exports = {
     
     async execute(interaction) {
         try {
-            // Defer update
-            await interaction.deferUpdate();
+            if (!interaction.deferred) {
+                await interaction.deferUpdate().catch(() => {});
+            }
 
             // Parse the custom ID to get show ID and season number
             const { showId, seasonNumber } = idParser.parseCustomId(interaction.customId);

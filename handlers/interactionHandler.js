@@ -77,15 +77,23 @@ module.exports = {
         } catch (error) {
             console.error('❌ Error handling interaction:', error);
 
-            const errorMessage = {
-                content: '❌ An error occurred while processing your request.',
-                ephemeral: true
-            };
+            try {
+                const errorMessage = {
+                    content: '❌ An error occurred while processing your request.',
+                    ephemeral: true
+                };
 
-            if (interaction.deferred || interaction.replied) {
-                await interaction.editReply(errorMessage);
-            } else {
-                await interaction.reply(errorMessage);
+                if (interaction.isAutocomplete()) {
+                    return; // Can't send error messages for autocomplete interactions
+                }
+
+                if (!interaction.deferred && !interaction.replied) {
+                    await interaction.reply(errorMessage);
+                } else if (interaction.deferred) {
+                    await interaction.editReply(errorMessage);
+                }
+            } catch (e) {
+                console.error('❌ Failed to send error message:', e);
             }
         }
     }

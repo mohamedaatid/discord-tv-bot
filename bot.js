@@ -23,7 +23,7 @@ client.on('interactionCreate', async (interaction) => {
 });
 
 // Bot ready event
-client.once('ready', () => {
+client.once('clientReady', () => {
     console.log(`✅ Bot is online as ${client.user.tag}`);
     console.log(`📊 Serving ${client.guilds.cache.size} servers`);
     

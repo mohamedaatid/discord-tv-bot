@@ -1,92 +1,281 @@
-# Discord TV Bot
+# 🎬 Discord TV Bot
 
-Effortlessly find and watch your favorite TV shows and movies directly through Discord with the **Discord TV Bot**! Powered by the TMDB API, this bot provides a seamless experience with autocomplete suggestions and interactive menus to browse and stream episodes in just a few clicks.
+A powerful Discord bot that allows users to search and watch TV show episodes directly through Discord using TMDB API and VidKing streaming service.
 
-## Features
+## ✨ Features
 
-- **Autocomplete Search**: Start typing a TV show or movie name, and the bot suggests matches in real-time.
-- **Interactive Menus**: Select seasons and episodes using dropdown menus for a user-friendly experience.
-- **Instant Streaming Links**: Get direct links to watch your selected episode or movie.
-- **Lightweight and Fast**: Built with Node.js and Discord.js for optimal performance.
-- **Open Source**: Licensed under MIT, contributions are welcome!
+- 🔍 **Smart Search** - Fast autocomplete search for TV shows using TMDB database
+- 📺 **Season & Episode Selection** - Easy-to-use dropdown menus for browsing seasons and episodes
+- 🎯 **Direct Streaming Links** - Instant access to episode streaming via VidKing
+- 🔒 **Channel Restrictions** - Optional channel whitelisting for controlled bot access
+- 🎨 **Rich Embeds** - Beautiful, informative Discord embeds with show details
+- ⚡ **Fast & Responsive** - Optimized API calls and caching for quick responses
 
-## Installation
+## 📋 Prerequisites
 
-1. **Install Dependencies**
+Before you begin, ensure you have the following:
 
-   Install the required packages by running:
+- [Node.js](https://nodejs.org/) (v16.9.0 or higher)
+- [Discord Bot Token](https://discord.com/developers/applications)
+- [TMDB API Key](https://www.themoviedb.org/settings/api)
+- Basic knowledge of Discord bot setup
 
-   ```bash
-   npm install discord.js dotenv node-fetch @discordjs/rest @discordjs/builders moviedb-promise axios
-   ```
+## 🚀 Installation
 
-2. **Configure Environment Variables**
-
-   ```bash
-   cp .env.example .env
-   ```
-
-   Open the `.env` file in a text editor and add your credentials:
-
-   ```
-   DISCORD_BOT_TOKEN=your_discord_bot_token_here
-   DISCORD_CLIENT_ID=your_discord_client_id_here
-   TMDB_API_KEY=your_tmdb_api_key_here
-   ```
-
-   - `DISCORD_BOT_TOKEN`: Obtain from the [Discord Developer Portal](https://discord.com/developers/applications).
-   - `DISCORD_CLIENT_ID`: Found in the same portal under your application’s “General Information” tab.
-   - `TMDB_API_KEY`: Get from the [TMDB website](https://www.themoviedb.org/documentation/api) after creating an account.
-
-3. **Run the Bot**
-
-   ```bash
-   npm start
-   ```
-
-   The bot should now be online and ready to use in your Discord server!
-
-## Usage
-
-1. **Invite the Bot**: Add the bot to your Discord server using the OAuth2 URL generated in the Discord Developer Portal (ensure it has the `bot` and `applications.commands` scopes).
-2. **Use the `/watch` Command**:
-   - Type `/watch` in any channel where the bot has permission.
-   - Start typing a TV show or movie name to see autocomplete suggestions.
-   - Select a show or movie from the suggestions.
-   - Choose a season (for TV shows) and an episode from the interactive dropdown menus.
-   - Click the generated streaming link to watch instantly!
-
-## Example
-
-```
-/watch
-[Type "Breaking Bad"]
-[Select "Breaking Bad" from autocomplete]
-[Choose Season 1]
-[Choose Episode 1]
-[Click the provided link to watch]
+### 1. Clone the Repository
+```bash
+git clone https://github.com/yourusername/discord-tv-bot.git
+cd discord-tv-bot
 ```
 
-## Troubleshooting
+### 2. Install Dependencies
+```bash
+npm install
+```
 
-- **Bot not responding?** Check your `.env` file for correct credentials and ensure the bot has proper permissions in your server.
-- **No streaming links?** Verify your TMDB API key and ensure the show/episode is available on TMDB.
-- **Errors during `npm start`?** Ensure all dependencies are installed correctly and Node.js (v16.9.0 or higher) is up-to-date.
+### 3. Configure Environment Variables
 
-## License
+Create a `.env` file in the root directory:
+```properties
+# Discord Configuration
+DISCORD_BOT_TOKEN=your_discord_bot_token_here
+DISCORD_CLIENT_ID=your_discord_client_id_here
+DISCORD_GUILD_ID=your_guild_id_here_optional
 
-This project is licensed under the [MIT License](LICENSE). Feel free to use, modify, and distribute as per the license terms.
+# TMDB API Configuration
+TMDB_API_KEY=your_tmdb_api_key_here
+TMDB_BASE_URL=https://api.themoviedb.org/3
 
-## Acknowledgments
+# Streaming Service
+VIDKING_BASE_URL=https://www.vidking.net/embed/tv
 
-- Built with [Discord.js](https://discord.js.org/) for Discord API integration.
-- Powered by [The Movie Database (TMDB)](https://www.themoviedb.org/) for show and movie data.
-- Thanks to all contributors and the open-source community!
+# Channel Restrictions (Optional - comma-separated channel IDs)
+ALLOWED_CHANNEL_IDS=1234567890123456789,9876543210987654321
 
-## Contact
+# Bot Configuration
+NODE_ENV=production
+LOG_LEVEL=info
+```
 
-For questions, suggestions, or issues, reach out via the project’s issue tracker or contact the maintainer.
+### 4. Register Slash Commands
+```bash
+node deploy-commands.js
+```
 
----
+### 5. Start the Bot
+```bash
+npm start
+```
 
-Happy watching! 🎬
+## 📁 Project Structure
+```
+discord-tv-bot/
+│
+├── config/
+│   └── config.js                 # Configuration and environment variables
+│
+├── services/
+│   └── tmdbService.js            # TMDB API integration
+│
+├── commands/
+│   ├── watch.js                  # Main /watch slash command
+│   └── search.js                 # Autocomplete handler for TV show search
+│
+├── interactions/
+│   ├── seasonSelect.js           # Season selection handler
+│   └── episodeSelect.js          # Episode selection handler
+│
+├── utils/
+│   ├── idParser.js               # Parse custom interaction IDs
+│   ├── embedBuilder.js           # Create Discord embeds
+│   └── errorHandler.js           # Error handling and messages
+│
+├── handlers/
+│   ├── commandHandler.js         # Load and register commands
+│   └── interactionHandler.js    # Route interactions to handlers
+│
+├── bot.js                        # Main bot entry point
+├── deploy-commands.js            # Command deployment script
+├── package.json                  # Dependencies and scripts
+├── .env                          # Environment variables (gitignored)
+├── .env.example                  # Environment variables template
+├── .gitignore                    # Git ignore rules
+├── LICENSE                       # MIT License
+└── README.md                     # This file
+```
+
+## 🎮 Usage
+
+### `/watch` Command
+
+1. Type `/watch` in any allowed channel
+2. Start typing a TV show name
+3. Select your show from the autocomplete suggestions
+4. Choose a season from the dropdown menu
+5. Select an episode from the dropdown menu
+6. Click the **"Watch Now"** button to start streaming!
+
+### Example Flow
+```
+User: /watch Breaking Bad
+Bot: [Shows season selection menu]
+User: [Selects Season 1]
+Bot: [Shows episode selection menu]
+User: [Selects Episode 1: Pilot]
+Bot: [Displays episode info with "Watch Now" button]
+```
+
+## ⚙️ Configuration
+
+### Channel Restrictions
+
+To restrict the bot to specific channels, add channel IDs to your `.env` file:
+```properties
+ALLOWED_CHANNEL_IDS=1234567890123456789,9876543210987654321
+```
+
+Leave empty or remove the line to allow bot usage in all channels.
+
+### Customization
+
+#### Embed Colors
+
+Edit `config/config.js` to customize embed colors:
+```javascript
+COLORS: {
+    PRIMARY: 0x5865F2,    // Blurple
+    SUCCESS: 0x57F287,    // Green
+    ERROR: 0xED4245,      // Red
+    WARNING: 0xFEE75C     // Yellow
+}
+```
+
+#### Search Results Limit
+
+Adjust the number of autocomplete results:
+```javascript
+MAX_AUTOCOMPLETE_RESULTS: 25  // Discord's maximum is 25
+```
+
+#### Streaming Service
+
+Change the streaming service by updating the `VIDKING_BASE_URL` in `.env`:
+```properties
+VIDKING_BASE_URL=https://your-streaming-service.com/embed/tv
+```
+
+## 🛠️ Development
+
+### Running in Development Mode
+```bash
+npm run dev
+```
+
+### Testing Commands Locally
+
+Use `DISCORD_GUILD_ID` in `.env` for faster command registration during development:
+```properties
+DISCORD_GUILD_ID=your_test_server_id
+```
+
+This registers commands only to your test server instead of globally.
+
+### Logging
+
+Set log level in `.env`:
+```properties
+LOG_LEVEL=debug  # Options: error, warn, info, debug
+```
+
+## 📦 Dependencies
+
+### Core Dependencies
+
+- **discord.js** (v14.x) - Discord API wrapper
+- **axios** - HTTP client for TMDB API calls
+- **dotenv** - Environment variable management
+
+### Dev Dependencies
+
+- **nodemon** - Auto-restart during development
+
+## 🔧 Troubleshooting
+
+### Bot Not Responding
+
+1. Check if bot is online in Discord
+2. Verify bot has proper permissions in the channel
+3. Check console for error messages
+4. Ensure slash commands are registered (`node deploy-commands.js`)
+
+### Commands Not Appearing
+
+1. Re-run `node deploy-commands.js`
+2. Wait up to 1 hour for global commands to update
+3. Use guild-specific registration for instant updates during testing
+
+### TMDB API Errors
+
+1. Verify your TMDB API key is valid
+2. Check if you've exceeded rate limits (40 requests per 10 seconds)
+3. Ensure `TMDB_BASE_URL` is correct in `.env`
+
+### Channel Restriction Not Working
+
+1. Verify channel IDs are correct (right-click channel → Copy ID)
+2. Ensure Developer Mode is enabled in Discord
+3. Check that IDs are comma-separated with no spaces
+
+## 🤝 Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+### Code Style
+
+- Use meaningful variable names
+- Add comments for complex logic
+- Follow existing code structure
+- Test thoroughly before submitting
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- [The Movie Database (TMDB)](https://www.themoviedb.org/) for providing the TV show data API
+- [VidKing](https://www.vidking.net/) for streaming service
+- [discord.js](https://discord.js.org/) for the amazing Discord library
+- All contributors who help improve this project
+
+## 📞 Support
+
+- **Issues**: [GitHub Issues](https://github.com/yourusername/discord-tv-bot/issues)
+- **Discord**: [Join our support server](#)
+- **Documentation**: [Wiki](https://github.com/yourusername/discord-tv-bot/wiki)
+
+## 🔮 Roadmap
+
+- [ ] Add movie support
+- [ ] Implement user favorites/watchlist
+- [ ] Add anime support
+- [ ] Multi-language support
+- [ ] Watch history tracking
+- [ ] Premium/subscription features
+- [ ] Additional streaming service integrations
+
+## ⚠️ Disclaimer
+
+This bot is for educational purposes only. Ensure you comply with:
+- TMDB API Terms of Service
+- Discord Terms of Service
+- Streaming service terms and copyright laws
+- Local laws regarding media streaming
+
+The developers are not responsible for misuse of this software.

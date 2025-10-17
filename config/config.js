@@ -29,6 +29,11 @@ module.exports = {
     // Select menu limits
     MAX_SELECT_OPTIONS: 25,
     
+    // Channel Restrictions
+    ALLOWED_CHANNEL_IDS: process.env.ALLOWED_CHANNEL_IDS 
+        ? process.env.ALLOWED_CHANNEL_IDS.split(',').map(id => id.trim())
+        : [],
+    
     // Colors for embeds
     COLORS: {
         PRIMARY: 0x5865F2,    // Blurple

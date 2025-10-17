@@ -24,7 +24,7 @@ Before you begin, ensure you have the following:
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/discord-tv-bot.git
+git clone https://github.com/mohamedaatid/discord-tv-bot.git
 cd discord-tv-bot
 ```
 
@@ -226,23 +226,6 @@ LOG_LEVEL=debug  # Options: error, warn, info, debug
 2. Ensure Developer Mode is enabled in Discord
 3. Check that IDs are comma-separated with no spaces
 
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-### Code Style
-
-- Use meaningful variable names
-- Add comments for complex logic
-- Follow existing code structure
-- Test thoroughly before submitting
-
 ## 📝 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
@@ -252,30 +235,24 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [The Movie Database (TMDB)](https://www.themoviedb.org/) for providing the TV show data API
 - [VidKing](https://www.vidking.net/) for streaming service
 - [discord.js](https://discord.js.org/) for the amazing Discord library
-- All contributors who help improve this project
-
-## 📞 Support
-
-- **Issues**: [GitHub Issues](https://github.com/yourusername/discord-tv-bot/issues)
-- **Discord**: [Join our support server](#)
-- **Documentation**: [Wiki](https://github.com/yourusername/discord-tv-bot/wiki)
-
-## 🔮 Roadmap
-
-- [ ] Add movie support
-- [ ] Implement user favorites/watchlist
-- [ ] Add anime support
-- [ ] Multi-language support
-- [ ] Watch history tracking
-- [ ] Premium/subscription features
-- [ ] Additional streaming service integrations
 
 ## ⚠️ Disclaimer
 
-This bot is for educational purposes only. Ensure you comply with:
+This bot is for educational and personal use only. Ensure you comply with:
 - TMDB API Terms of Service
 - Discord Terms of Service
 - Streaming service terms and copyright laws
 - Local laws regarding media streaming
 
-The developers are not responsible for misuse of this software.
+The developer is not responsible for misuse of this software.
+
+## 📊 Stats
+
+![GitHub stars](https://img.shields.io/github/stars/mohamedaatid/discord-tv-bot?style=social)
+![GitHub forks](https://img.shields.io/github/forks/mohamedaatid/discord-tv-bot?style=social)
+![GitHub issues](https://img.shields.io/github/issues/mohamedaatid/discord-tv-bot)
+![GitHub license](https://img.shields.io/github/license/mohamedaatid/discord-tv-bot)
+
+---
+
+Made with ❤️ by [Mohamed Aatid](https://github.com/mohamedaatid)

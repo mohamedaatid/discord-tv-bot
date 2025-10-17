@@ -1,8 +1,11 @@
+# Discord TV Bot
+Find and watch TV episodes instantly through Discord
+
 ## Installation
 
 1. **Clone the repository**
 ```bash
-   git clone https://github.com/yourusername/discord-tv-bot.git
+   git clone https://github.com/mohamedaatid/discord-tv-bot.git
    cd discord-tv-bot
 ```
 
@@ -34,10 +37,6 @@
 5. Choose an episode from the dropdown menu
 6. Click the generated link to watch!
 
-## Project Structure
-
-[Include the folder structure we defined]
-
 ## Contributing
 
 Pull requests are welcome! For major changes, please open an issue first.
@@ -45,5 +44,3 @@ Pull requests are welcome! For major changes, please open an issue first.
 ## License
 
 [MIT](LICENSE)
-
-## Credits
